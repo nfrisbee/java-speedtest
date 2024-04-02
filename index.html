@@ -6,12 +6,25 @@
     <title>Speedtest</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<div>
+<body>
     <h1>Welcome to the SeekWell Speed Test!</h1>
-        <div class="container">
-            <h2>Click the button below to get started</h2>
-                <button class="custom-button">Begin Speed Test</button>
-            <img src="./images/seekwell.png" alt="SeekWell Logo" style="width: 150px; height: auto;"/>
-        </div>
-</div>
+        <h2>Please fill out the form below and then click the Begin Speed Test button.</h2>
+    <!--Need to add a form ACTION and form METHOD-->   
+        <form action="" method=""> 
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" placeholder="Spongebob" required><br>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" placeholder="Squarepants"required><br>
+            <label for="companyEmail">Company Email Address:</label>
+            <input type="text" id="companyEmail" placeholder="sbsquarepants@seekwell.com"><br>
+            <label for="personalEmail">Personal Email Address:</label>
+            <input type="text" id="personalEmail" placeholder="gonejellyfishing@outlook.com" required><br>
+        </form>
+            <div class="container">
+                <h3>Click the button below to get started</h3>
+                    <button class="custom-button">Begin Speed Test</button>
+                <img src="./images/seekwell.png" alt="SeekWell Logo" style="width: 150px; height: auto;"/>
+            </div>
+    </div>
+</body>
 </html>
