@@ -1,32 +1,26 @@
-// Defining the pingIP function
-function pingIP(ipAddress) { 
+// Defining the pingUser function
+function pingUser() { 
     var settings = { 
-        // Defines the configurations for the request 
-        cache: false, 
-        dataType: "json", 
-        async: true, 
-        crossDomain: true, 
-        url: "http://" + ipAddress,
-        method: "GET", 
-        headers: { 
-            accept: "application/json", 
-            "Access-Control-Allow-Origin": "*", 
-        }, 
+        url: "http://localhost:3000/ping",
+        method: "POST", 
+        contentType: "application/json",
+        data: JSON.stringify({ ip: "user_ip_here" }),
+        success: function(response) {
+            console.log(response);
+            alert('Ping results received. Check console for details.');
+        },
+        error: function(error) {
+            console.error(error);
+            alert('Failed to ping the user\'s IP address.');
+        }
     };
 
     // Sends the request and observes the response 
-    $.ajax(settings).done(function (response) { 
-        console.log(response); 
-    
-    }); 
+    $.ajax(settings);
 } 
 
 $(document).ready(function() {
     $(".custom-button").click(function() {
-        // Ping the first IP address
-        pingIP("204.16.236.8"); 
-        
-        // Ping the second IP address
-        pingIP("204.16.238.8");
+        pingUser();
     });
 });
