@@ -9,20 +9,23 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.post('/ping', async (req, res) => {
-    const { ip } = req.body;
-    if (!ip) {
-        return res.status(400).json({ error: 'IP address is required' });
+    const { userIP, ipAddresses } = req.body;
+    if (!userIP || !ipAddresses) {
+        return res.status(400).json({ error: 'User IP address and IP addresses to ping are required' });
     }
 
     try {
-        const response1 = await ping.promise.probe(ip, { timeout: 10 });
-        const response2 = await ping.promise.probe(ip, { timeout: 10 });
+        const results = [];
+        for (const ip of ipAddresses) {
+            const response = await ping.promise.probe(ip, { timeout: 10 });
+            results.push(response);
+        }
         res.json({
-            ip,
-            results: [response1, response2]
+            userIP,
+            results
         });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to ping IP address' });
+        res.status(500).json({ error: 'Failed to ping IP addresses' });
     }
 });
 
