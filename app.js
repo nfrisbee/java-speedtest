@@ -1,3 +1,11 @@
+//Function to get user's IP address
+function getUserIP(callback) {
+    $.getJSON('https://api.ipify.org?format=json', function(data) {
+        callback(data.ip);
+    });
+}
+
+
 // Defining the pingUser function
 function pingUser() { 
     var settings = { 
@@ -7,6 +15,7 @@ function pingUser() {
         data: JSON.stringify({ ip: "user_ip_here" }),
         success: function(response) {
             console.log(response);
+            //I will change the alert message after code is complete
             alert('Ping results received. Check console for details.');
         },
         error: function(error) {
