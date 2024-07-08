@@ -2,6 +2,17 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "nodemailer": "^6.9.14",
     "ping": "^0.4.4"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "java-speedtest",
+  "description": "An internal speed test page for new hires to test their network connection",
+  "version": "1.0.0",
+  "main": "app.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

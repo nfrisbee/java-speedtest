@@ -15,12 +15,14 @@ function pingUser(userIP) {
         data: JSON.stringify({ userIP: userIP, ipAddresses: ipAddresses }),
         success: function(response) {
             console.log(response);
-            alert('Ping results received. Check console for details.');
+            alert('Ping results received! You can now close this window.');
+            $('body').removeClass('loading');
         },
         error: function(error) {
             console.error(error);
-            alert('Failed to ping the user\'s IP address.');
-        }
+            alert('Failed to ping the user\'s IP address. Please contact your recruiter helpdesk@1800contacts.com ');
+            $('body').removeClass('loading');
+        } 
     };
 
     // Sends the request and observes the response
@@ -29,6 +31,7 @@ function pingUser(userIP) {
 
 $(document).ready(function() {
     $(".custom-button").click(function() {
+        $('body').addClass('loading');
         getUserIP(function(userIP) {
             pingUser(userIP);
         });
